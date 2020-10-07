@@ -3,8 +3,10 @@ package com.example.authenticationfatma;
 public class User {
     String fullname , email,password;
 
-    public User(String fullname) {
+
+    public User(String fullname, String email) {
         this.fullname = fullname;
+        this.email = email;
     }
 
     public User() {

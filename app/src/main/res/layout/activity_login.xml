@@ -7,6 +7,16 @@
     android:visibility="visible"
     tools:context=".LoginActivity">
 
+
+    <!--<ImageView
+    android:id="@+id/imageView"
+
+    android:layout_width="411dp"
+    android:layout_height="675dp"
+    app:srcCompat="@drawable/rectangle"
+    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteY="240dp" />-->
+
     <TextView
         android:id="@+id/signIn"
         android:layout_width="wrap_content"
@@ -137,7 +147,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="24dp"
-        android:text="Create new account   "
+        android:text="Create new account"
         android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView"
@@ -146,13 +156,6 @@
         app:layout_constraintTop_toBottomOf="@+id/signInButton"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/imageView"
 
-        android:layout_width="411dp"
-        android:layout_height="675dp"
-        app:srcCompat="@drawable/Rectangle"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="240dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

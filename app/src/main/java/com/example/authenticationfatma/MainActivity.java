@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     TextView submit ,textView2;
@@ -23,7 +26,14 @@ public class MainActivity extends AppCompatActivity {
     Button but;
     ProgressBar progress;
     FirebaseAuth mAuth;
+    User user;
 
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private FirebaseUser userkey;
+
+    private String Email;
+    private String Name;
 
 
     @Override
@@ -44,13 +54,16 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference().child("users");
+
 
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Email =email.getText().toString().trim();
+                Email =email.getText().toString().trim();
                 String Pwd = pwd.getText().toString().trim();
-                String Name=fullname.getText().toString();
+                Name =fullname.getText().toString();
                 if(Email.isEmpty()){
                     email.setError("Please enter email id");
                     email.requestFocus();
@@ -77,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
                                 progress.setVisibility(View.GONE);
 
                             }else{
+                                userkey = FirebaseAuth.getInstance().getCurrentUser() ;
+
+                                user = new User(Name , Email);
+
+                                myRef.child(userkey.getUid()).setValue(user);
+
                                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
 
 
@@ -100,5 +119,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
 }
